@@ -1,4 +1,4 @@
-package com.devsuperior.dsmovie.config.entities;
+package com.devsuperior.dsmovie.entities;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,28 +13,26 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_movie")
 public class Movie {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private Double score;
-	private Integer Count;
+	private Integer count;
 	private String image;
 	
 	@OneToMany(mappedBy = "id.movie")
 	private Set<Score> scores = new HashSet<>();
 	
 	public Movie() {
-		
 	}
 
 	public Movie(Long id, String title, Double score, Integer count, String image) {
-		super();
 		this.id = id;
 		this.title = title;
 		this.score = score;
-		Count = count;
+		this.count = count;
 		this.image = image;
 	}
 
@@ -63,11 +61,11 @@ public class Movie {
 	}
 
 	public Integer getCount() {
-		return Count;
+		return count;
 	}
 
 	public void setCount(Integer count) {
-		Count = count;
+		this.count = count;
 	}
 
 	public String getImage() {
@@ -81,6 +79,4 @@ public class Movie {
 	public Set<Score> getScores() {
 		return scores;
 	}
-
-	
 }
